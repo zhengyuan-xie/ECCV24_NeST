@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Early Preparation Pays Off: New Classifier Pre-tuning for Class Incremental Semantic Segmentation (ECCV 2024)
 
 An official code for "[Early Preparation Pays Off: New Classifier Pre-tuning for Class Incremental Semantic Segmentation](https://arxiv.org/abs/2407.14142)"
