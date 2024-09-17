@@ -84,7 +84,3 @@ If you have any question, please contact <a href="zhengyuanxie2000@gmail.com">zh
 ## Acknowledgement
 
 This code is based on [[MiB]](https://github.com/fcdl94/MiB) and [[PLOP]](https://github.com/arthurdouillard/CVPR2021_PLOP). We highly appreciate their contributions to this community.
-=======
-# Early Preparation Pays Off: New Classifier Pre-tuning for Class Incremental Semantic Segmentation (ECCV2024)
-Code is coming soon :)
->>>>>>> 07ba7e098a94314a9ca1d262a65899248455d80e
