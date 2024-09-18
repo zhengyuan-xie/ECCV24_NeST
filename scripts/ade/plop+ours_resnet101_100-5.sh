@@ -10,7 +10,7 @@ PORT=$((9000 + RANDOM % 1000))
 GPU=0,1,2,3
 NB_GPU=4
 
-DATA_ROOT=/defaultShare/pubdata
+DATA_ROOT=path/to/your/dataset/
 
 DATASET=ade
 TASK=100-5
@@ -39,7 +39,7 @@ echo "Writing in ${RESULTSFILE}"
 # And for the second step, this option:
 # --step_ckpt ${FIRSTMODEL}
 
-#CUDA_VISIBLE_DEVICES=${GPU} python3 -m torch.distributed.launch --master_port ${PORT} --nproc_per_node=${NB_GPU} run.py --date ${START_DATE} --data_root ${DATA_ROOT} --overlap --batch_size 6 --dataset ${DATASET} --name ${NAME} --task ${TASK} --step 0 --lr 0.02 --epochs 60 --method ${METHOD} --opt_level O1 ${OPTIONS}
+CUDA_VISIBLE_DEVICES=${GPU} python3 -m torch.distributed.launch --master_port ${PORT} --nproc_per_node=${NB_GPU} run.py --date ${START_DATE} --data_root ${DATA_ROOT} --overlap --batch_size 6 --dataset ${DATASET} --name ${NAME} --task ${TASK} --step 0 --lr 0.02 --epochs 60 --method ${METHOD} --opt_level O1 ${OPTIONS}
 CUDA_VISIBLE_DEVICES=${GPU} python3 -m torch.distributed.launch --master_port ${PORT} --nproc_per_node=${NB_GPU} run.py --date ${START_DATE} --data_root ${DATA_ROOT} --overlap --batch_size 6 --dataset ${DATASET} --name ${NAME} --task ${TASK} --step 1 --lr 0.001 --epochs 60 --method ${METHOD} --opt_level O1 ${OPTIONS} --pod_options "{\"switch\": {\"after\": {\"extra_channels\": \"sum\", \"factor\": 0.00001, \"type\": \"local\"}}}"
 CUDA_VISIBLE_DEVICES=${GPU} python3 -m torch.distributed.launch --master_port ${PORT} --nproc_per_node=${NB_GPU} run.py --date ${START_DATE} --data_root ${DATA_ROOT} --overlap --batch_size 6 --dataset ${DATASET} --name ${NAME} --task ${TASK} --step 2 --lr 0.001 --epochs 60 --method ${METHOD} --opt_level O1 ${OPTIONS} --pod_options "{\"switch\": {\"after\": {\"extra_channels\": \"sum\", \"factor\": 0.00001, \"type\": \"local\"}}}"
 CUDA_VISIBLE_DEVICES=${GPU} python3 -m torch.distributed.launch --master_port ${PORT} --nproc_per_node=${NB_GPU} run.py --date ${START_DATE} --data_root ${DATA_ROOT} --overlap --batch_size 6 --dataset ${DATASET} --name ${NAME} --task ${TASK} --step 3 --lr 0.001 --epochs 60 --method ${METHOD} --opt_level O1 ${OPTIONS} --pod_options "{\"switch\": {\"after\": {\"extra_channels\": \"sum\", \"factor\": 0.00001, \"type\": \"local\"}}}"
