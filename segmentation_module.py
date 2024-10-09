@@ -276,7 +276,7 @@ def make_model(opts, classes=None):
             replace_stride_with_dilation=[False, False, True]
             aspp_dilate = [6, 12, 18]
 
-        body = swin._swin_b(pretrained=True)
+        body = swin._swin_b(pretrained=True, opts=opts)
         inplanes = 1024 
         low_level_planes = 256
 

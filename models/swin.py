@@ -629,7 +629,7 @@ class SwinTransformer(nn.Module):
         self._freeze_stages()
 
 
-def _swin_b(pretrained=False, **kwargs):
+def _swin_b(pretrained=False, opts=None, **kwargs):
     model = SwinTransformer(        pretrain_img_size=384,
                                     embed_dim=128,
                                     depths=[2, 2, 18, 2],
@@ -640,7 +640,8 @@ def _swin_b(pretrained=False, **kwargs):
                                     patch_norm=True,
                                     use_checkpoint=False)
     if pretrained:
-        path = "/defaultShare/archive/xiezhengyuan/ECCV24_NeST/pretrained/swin_base_patch4_window12_384.pth"
+        # path = "/defaultShare/archive/xiezhengyuan/ECCV24_NeST/pretrained/swin_base_patch4_window12_384.pth"
+        path = os.path.join(opts.code_directory, f'pretrained/swin_base_patch4_window12_384.pth')
         if not os.path.exists(path):
             raise NotImplementedError
             # url = "https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window12_384.pth"
