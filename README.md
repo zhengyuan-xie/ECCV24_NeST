@@ -8,6 +8,12 @@ This repository contains the official implementation of the following paper:
 ## Update
 - [√] Release the preliminary code and scripts for NeST. More scripts and the cleaned code will be released after careful testing.
 
+## Introduction
+Class incremental semantic segmentation aims to preserve old knowledge while learning new tasks, however, it is impeded by catastrophic forgetting and background shift issues. Prior works indicate the pivotal importance of initializing new classifiers and mainly focus on transferring knowledge from the background classifier or preparing classifiers for future classes, neglecting the flexibility and variance of new classifiers. In this paper, we propose a new classifier pre-tuning (NeST) method applied before the formal training process, learning a transformation from old classifiers to generate new classifiers for initialization rather than directly tuning the parameters of new classifiers. Our method can make new classifiers align with the backbone and adapt to the new data, preventing drastic changes in the feature extractor when learning new classes. Besides, we design a strategy considering the cross-task class similarity to initialize matrices used in the transformation, helping achieve the stability-plasticity trade-off. Experiments on Pascal VOC 2012 and ADE20K datasets show that the proposed strategy can significantly improve the performance of previous methods. 
+<p align="center">
+<img src="assert/github_NEST_system_design.png" alt="Image description" width="776.16" height="435.6">
+</p>
+
 ## Dataset Preparation
 
 - PASCAL VOC 2012
@@ -64,10 +70,11 @@ All experiemnts are conducted on 4 NVIDIA RTX 3090 GPUs.
 If our code and paper help you, please kindly cite:
 
 ```
-@article{xie2024early,
+@inproceedings{xie2024early,
   title={Early Preparation Pays Off: New Classifier Pre-tuning for Class Incremental Semantic Segmentation},
   author={Xie, Zhengyuan and Lu, Haiquan and Xiao, Jia-wen and Wang, Enguang and Zhang, Le and Liu, Xialei},
-  journal={arXiv preprint arXiv:2407.14142},
+  booktitle={European Conference on Computer Vision},
+  pages={183--201},
   year={2024}
 }
 ```
